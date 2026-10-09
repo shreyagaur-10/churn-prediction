@@ -1,0 +1,43 @@
+{
+    "run_id": "1b248229f6fa4390b8b728d5806ea37b",
+    "trained_at": "2026-05-06T23:21:10.036000",
+    "role": "champion",
+    "weights": {
+        "w_lgb": 0.5862993661487689,
+        "w_xgb": 0.18961586058147076,
+        "w_cat": 0.22408477326976037
+    },
+    "oof_roc_auc_scores": {
+        "roc_auc_lgb": 0.9160345435178957,
+        "roc_auc_xgb": 0.9124601831883029,
+        "roc_auc_cat": 0.9149079562059799,
+        "roc_auc_ensemble": 0.9163205766162063
+    },
+    "parameters": {
+        "lgb": {
+            "n_estimators": "700",
+            "max_depth": "6",
+            "learning_rate": "0.1",
+            "subsample": "0.9",
+            "colsample_bytree": "0.6",
+            "min_child_samples": "5",
+            "num_leaves": "15"
+        },
+        "xgb": {
+            "n_estimators": "700",
+            "max_depth": "4",
+            "learning_rate": "0.5",
+            "subsample": "0.6",
+            "colsample_bytree": "0.8",
+            "min_child_weight": "1",
+            "gamma": "0.1"
+        },
+        "cat": {
+            "iterations": "300",
+            "depth": "5",
+            "learning_rate": "0.05",
+            "l2_leaf_reg": "9",
+            "subsample": "0.6"
+        }
+    }
+}

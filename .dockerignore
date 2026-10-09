@@ -1,0 +1,39 @@
+# Important Files
+.env
+.env.docker
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python Cache Files
+__pycache__/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# MLFlow runs
+mlruns/
+mlartifacts/
+mlflow.db
+
+# Folders
+archive/
+tests/
+model_training/
+
+# Github Files
+.git/
+.gitignore
+.gitattributes
+
+# Remove Setup folder
+churn_prediction.egg-info/
+
+# Virtual Environments
+venv/
+.venv/
