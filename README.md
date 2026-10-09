@@ -367,15 +367,9 @@ Render Deploy   HF Spaces Sync
 - API deployment platform: [Render](https://render.com)
 - Streamlit dashboard hosting: [Hugging Face Spaces](https://huggingface.co/spaces)
 
-## Author
 
-**Gaurav Singariya**
 
-- Email: gaurav.singariya.26@gmail.com
-- LinkedIn: [linkedin.com/in/gauravsingariya](https://www.linkedin.com/in/gauravsingariya/)
-- GitHub: [github.com/gaurav-S8](https://github.com/gaurav-S8)
 
-[![GitHub](https://img.shields.io/badge/GitHub-gaurav--S8-181717?style=flat&logo=github&logoColor=white)](https://github.com/gaurav-s8)
 
 ---
 
