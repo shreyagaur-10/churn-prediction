@@ -1,65 +1,69 @@
-# Production MLOps Platform for Real-Time Customer Churn Prediction
+# ⚡ ChurnRadar AI: Real-Time Customer Retention & Predictive MLOps Engine
+
+> *Transforming customer behavioral signals into actionable retention intelligence with explainable AI and production-grade MLOps.*
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=flat&logo=fastapi&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Cloud-FF4B4B?style=flat&logo=streamlit&logoColor=white)
 ![MLflow](https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?style=flat&logo=mlflow&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI/CD-2088FF?style=flat&logo=githubactions&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-Deployment-46E3B7?style=flat&logo=render&logoColor=black)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-Spaces-FFD21E?style=flat&logo=huggingface&logoColor=black)
 ![Optuna](https://img.shields.io/badge/Optuna-Hyperparameter%20Tuning-5A0FC8?style=flat)
 ![SHAP](https://img.shields.io/badge/SHAP-Explainability-FF6B6B?style=flat)
 ![Evidently](https://img.shields.io/badge/Evidently-Drift%20Detection-6B4FBB?style=flat)
 ![Neon](https://img.shields.io/badge/Neon-Cloud%20Postgres-00E599?style=flat&logo=neon&logoColor=black)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
-## Demo Links
+---
 
-| Service | URL |
-|---|---|
-| FastAPI Backend | [churn-prediction-mlops.onrender.com](https://churn-prediction-mlops.onrender.com) |
-| API Documentation | [churn-prediction-mlops.onrender.com/docs](https://churn-prediction-mlops.onrender.com/docs) |
-| Streamlit Dashboard | [huggingface.co/spaces/gaurav-S8/churn-prediction-mlops](https://huggingface.co/spaces/gaurav-S8/churn-prediction-mlops) |
+## 🌐 Live Deployments
 
-> **Note:** All API endpoints (except `/health` and `/`) require an API key.  
-> UptimeRobot pings `/health` every 5 minutes to minimize cold starts.
-> The Render instance may still take ~30s to wake up on first request (free tier cold start).
+| Service | Endpoint | Description |
+|---|---|---|
+| 🖥️ **Web Dashboard** | [churn-prediction-lxbzq4psrkfqc656owuekf.streamlit.app](https://churn-prediction-lxbzq4psrkfqc656owuekf.streamlit.app/) | Interactive portal for live predictions, SHAP breakdowns & drift audits |
+| ⚡ **Inference API** | [churn-prediction-k5ef.onrender.com](https://churn-prediction-k5ef.onrender.com) | Production REST API with token security & sub-second latency |
+| 📖 **Interactive Docs** | [churn-prediction-k5ef.onrender.com/docs](https://churn-prediction-k5ef.onrender.com/docs) | Swagger OpenAPI explorer for payload testing |
 
-## Overview
-A production-grade MLOps platform for real-time customer churn prediction using a weighted ensemble of LightGBM, XGBoost, and CatBoost, achieving a Private Leaderboard ROC-AUC of 0.9154 on Kaggle Playground Series S6E3.
+> 💡 **Notice:** All endpoints (except `/health` and `/`) require header authentication (`X-API-Key`).  
+> The free-tier backend sleeps during idle periods and spins up within ~30–60s on the initial ping.
 
-The system implements the full MLOps lifecycle, including Optuna-tuned model training with MLflow experiment tracking, a FastAPI inference service with A/B testing, SHAP explainability, and Evidently AI drift detection, backed by Neon Postgres for persistent storage of predictions, model metadata, and inference logs. The FastAPI service is fully containerized with Docker, deployed on Render, while the Streamlit monitoring dashboard is hosted on Hugging Face Spaces. The entire deployment pipeline is automated using GitHub Actions CI/CD.
+---
 
-## Kaggle Benchmark
+## 💡 What is ChurnRadar?
 
-**Competition**: [Playground Series S6E3 - Predict Customer Churn](https://www.kaggle.com/competitions/playground-series-s6e3)  
-**Dataset**: 594,194 rows  
-**Final Rank**: **1160 / 4142 teams (Top 28%)**  
-**Private Leaderboard ROC-AUC**: **0.9154** (within 0.003 of the top leaderboard)  
-**Validation ROC-AUC (OOF)**: **0.9162** (during training)
+**ChurnRadar** is an end-to-end, enterprise-ready MLOps platform engineered to predict customer churn before it happens. Built on top of a multi-model gradient boosting ensemble (**LightGBM + XGBoost + CatBoost**), the system combines high-precision machine learning with production resilience.
 
-### Model Performance (Training/Validation)
+From automated hyperparameter optimization via **Optuna** and lineage tracking in **MLflow**, to zero-downtime Champion/Challenger **A/B routing**, **SHAP** feature attribution, and **Evidently AI** data drift monitoring — ChurnRadar bridges the gap between Kaggle-grade competitive modeling and resilient cloud deployment.
 
-| Model | OOF ROC-AUC |
-|---|---|
-| LightGBM | 0.9147 |
-| XGBoost | 0.9154 |
-| CatBoost | 0.9150 |
-| **Weighted Ensemble** | **0.9162** |
+---
 
-Ensemble weights optimized via 500 Optuna trials on out-of-fold predictions.
+## 🏆 Kaggle Benchmark (Playground S6E3)
 
-## Key Features
+Tested against the massive [Kaggle Playground Series S6E3](https://www.kaggle.com/competitions/playground-series-s6e3) benchmark (**594,194 records**):
 
-- **Weighted Ensemble:** Combines LightGBM, XGBoost, and CatBoost using Optuna-optimized weights and Stratified K-Fold cross-validation.
-- **A/B Testing:** Champion vs Challenger request routing at inference time with MLflow lineage tracking
-- **Drift Detection:** Evidently AI compares live requests against reference data with per-feature drift scores and interactive HTML reports
-- **SHAP Explainability:** TreeExplainer-based feature contribution analysis for individual predictions
-- **Model Registry:** Postgres-backed registry tracking model lineage, hyperparameters, ROC-AUC, and live latency metrics
-- **Production Features:** API key authentication, slowapi rate limiting, connection pooling, background task logging, and Streamlit-side request caching
-- **CI/CD Pipeline:** GitHub Actions runs automated pytest suites and deploys to Render and Hugging Face Spaces on successful builds
-- **Streamlit Dashboard:** Unified UI for inference, explainability, benchmarking, drift analysis, A/B reporting, and registry monitoring
+- **Leaderboard Standing:** Top 28% (Rank **1160 / 4142** global teams)
+- **Private ROC-AUC:** **`0.9154`** (within 0.003 of the global #1 spot)
+- **Validation ROC-AUC (OOF):** **`0.9162`**
+
+### 🔬 Model Face-Off & Ensemble Synergy
+
+| Model Engine | Out-of-Fold ROC-AUC | Role |
+|---|:---:|---|
+| **LightGBM** | 0.9147 | Fast leaf-wise tree learner |
+| **XGBoost** | 0.9154 | High-regularization depth controller |
+| **CatBoost** | 0.9150 | Categorical boundary specialist |
+| 🌟 **Tri-Ensemble** | **0.9162** | **Optuna-weighted consensus (500 trials)** |
+
+---
+
+## 🚀 Key Architectural Capabilities
+
+- 🎯 **Tri-Boost Ensemble:** Dynamically combines predictions using Bayesian-optimized weights across 5-fold cross-validation.
+- 🔀 **Champion vs. Challenger A/B Engine:** Live routing of inference requests between stable production models and experimental challengers.
+- 🔍 **Glass-Box SHAP Explainability:** Translates complex tree decisions into transparent, feature-by-feature impact charts per individual customer.
+- 📡 **Automated Data Drift Surveillance:** Continuously audits incoming traffic against the reference population with Evidently AI.
+- 🏛️ **Cloud Model Registry:** Neon PostgreSQL-backed tracking of model versions, hyperparameters, and live response latencies.
+- 🛡️ **Hardened API Gateway:** Equipped with API-key guards, SlowAPI rate-limiting, non-blocking asynchronous logging, and connection pooling.
 
 ## System Architecture
 
@@ -113,7 +117,7 @@ Ensemble weights optimized via 500 Optuna trials on out-of-fold predictions.
 ┌──────────────────────────────────────────────────────────────────────┐
 │                            Frontend Layer                            │
 │                                                                      │
-│              Streamlit Dashboard (Hugging Face Spaces)               │
+│              Streamlit Dashboard (Streamlit Community Cloud)          │
 │                                                                      │
 │ ┌─────────┐ ┌─────────┐ ┌───────┐ ┌───────────┐ ┌─────┐ ┌──────────┐ │
 │ │ Predict │ │ Explain │ │ Drift │ │ Benchmark │ │ A/B │ │ Registry │ │
@@ -363,13 +367,17 @@ Render Deploy   HF Spaces Sync
 ## Acknowledgements
 
 - Dataset: [Kaggle Playground Series S6E3](https://www.kaggle.com/competitions/playground-series-s6e3)
-- Postgres hosting: [Neon](https://neon.tech)
-- API deployment platform: [Render](https://render.com)
-- Streamlit dashboard hosting: [Hugging Face Spaces](https://huggingface.co/spaces)
+- Database: [Neon Postgres](https://neon.tech)
+- API Hosting: [Render](https://render.com)
+- Web UI Hosting: [Streamlit Community Cloud](https://streamlit.io/cloud)
 
+## Author
 
+**Shreya Gaur**
 
+- GitHub: [github.com/shreyagaur-10](https://github.com/shreyagaur-10)
 
+[![GitHub](https://img.shields.io/badge/GitHub-shreyagaur--10-181717?style=flat&logo=github&logoColor=white)](https://github.com/shreyagaur-10)
 
 ---
 
